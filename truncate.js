@@ -1,4 +1,38 @@
+"use srict";
+
 // This is the file where you will write the Truncate Words function and related code.
+
+function truncateWords(longText, numWords) {
+    var truncatedText = longText
+    // Split string by space to get array of words.
+    var words = longText.split(" ");
+    // Calculate how many words need to be removed.
+    var countWordsInText = words.length;
+    var countWordsToRemove = countWordsInText - numWords;
+    // Truncate text only if it needs to.
+    if(countWordsToRemove > 0) {
+        var removeStartIndex = (countWordsInText - countWordsToRemove);
+        words.splice (removeStartIndex, countWordsToRemove);
+        words.push ("...")
+    
+        truncatedText = words.join(" ")
+    }
+
+    return truncatedText;
+}
+
+// Defining global values to use to test function
+var originalText = "There are two hard things in Computer Science: Cach invalidation, naming things, and off-by-one errors.";
+var wordLimit = 8;
+
+//Execute truncate words and assign result to variable.
+var shortText = truncateWords(originalText, wordLimit);
+
+// Display results to console.
+console.log('originalText: ' + originalText);
+console.log('shortText: ' + shortText);   
+    
+
 
 // TODO: Create a Function called truncateWords() that accepts two arguments: 
 // longText (a String with several words in it)
@@ -16,8 +50,5 @@
 // This portion of the script is meant to call and display the result of your Function.
 // You do not need to change the following lines, but you may change them if you 
 // are experimenting further or pursuing stretch goals.
-var originalText = "There are two hard things in Computer Science: Cach invalidation, naming things, and off-by-one errors.";
-var wordLimit = 8;
-var shortText = truncateWords(originalText, wordLimit);
-console.log('originalText: ' + originalText);
-console.log('shortText: ' + shortText);
+
+
